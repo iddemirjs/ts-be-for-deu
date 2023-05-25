@@ -1,4 +1,4 @@
-import {Column, DataType, Model, Not, Table} from "sequelize-typescript";
+import {Column, DataType, Default, Model, Not, Table} from "sequelize-typescript";
 
 @Table({
     tableName: Note.VAR_TABLE_NAME
@@ -8,6 +8,7 @@ export class Note extends Model {
     public  static  VAR_ID = "id" as string;
     public  static  VAR_NAME = "name" as string;
     public  static  VAR_DESCRIPTION = "description" as string;
+    public  static  VAR_IMAGE_URL = "imageUrl" as string;
 
     @Column({
         type: DataType.INTEGER,
@@ -28,4 +29,10 @@ export class Note extends Model {
         field: Note.VAR_DESCRIPTION
     })
     description!:string;
+
+    @Column({
+        type: DataType.STRING,
+        field: Note.VAR_IMAGE_URL,
+    })
+    imageUrl?:string;
 }

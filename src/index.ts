@@ -2,6 +2,7 @@ import express, {Application, Request, Response} from "express";
 import Database from "./config/database";
 import NoteRouter from "./router/NoteRouter";
 import AuthenticationRouter from "./router/AuthenticationRouter";
+import fileUpload from "express-fileupload";
 
 class App{
     public app: Application;
@@ -31,6 +32,7 @@ class App{
     protected plugins(): void {
         this.app.use(express.json());
         this.app.use(express.urlencoded({extended: true}));
+        this.app.use(fileUpload({ useTempFiles: true }));
     }
 }
 const port: number = 8000;
