@@ -29,5 +29,7 @@
     "sequelize": "^6.30.0",
     "sequelize-typescript": "^2.1.5",
     "yarn": "^1.22.19"
-  }
+  },
+  "repository": "git@github.com:iddemirjs/ts-be-for-deu.git",
+  "author": "iddemirfm1 <idris.demir@featuremind.com>"
 }
