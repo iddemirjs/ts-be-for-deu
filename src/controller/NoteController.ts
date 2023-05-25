@@ -1,15 +1,26 @@
 import { Request, Response } from "express";
 import { Note } from "../models/Note";
 import { NoteRepo } from "../repository/NoteRepo";
+import { Cloudinary } from "../service/Cloudinary";
 
 class NoteController {
-    async create(req: Request, res: Response) {
+    async create(req: Request | any, res: Response) {
         try {
             const { name, description } = req.body;
+            const tempFilePath  = req.files.image.tempFilePath;
+
+            const cloudinaryInstance = new Cloudinary();
+            const cloudinaryResponse = await cloudinaryInstance.uploadImage(tempFilePath);
+
+            if (!cloudinaryResponse.isSuccess) {
+                throw new Error(cloudinaryResponse.message);
+            }
 
             const new_note = new Note();
             new_note.name = name;
             new_note.description = description;
+            new_note.imageUrl = cloudinaryResponse.imageURL;
+
             await new NoteRepo().save(new_note);
 
             return res.status(200).json({

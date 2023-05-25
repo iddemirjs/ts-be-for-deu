@@ -18,7 +18,8 @@ export class NoteRepo implements INoteRepo {
         try {
             await Note.create({
                 name: note.name,
-                description: note.description
+                description: note.description,
+                imageUrl: note.imageUrl
             });
         } catch (e) {
             throw new Error("Failed to save note!");
