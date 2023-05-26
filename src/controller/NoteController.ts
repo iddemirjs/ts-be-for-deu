@@ -7,7 +7,6 @@ class NoteController {
     async create(req: Request | any, res: Response) {
         try {
             const { name, description } = req.body;
-            console.log(req);
             const tempFilePath  = req.files.image.tempFilePath;
 
             const cloudinaryInstance = new Cloudinary();
