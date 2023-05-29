@@ -9,6 +9,7 @@ export class Note extends Model {
     public  static  VAR_NAME = "name" as string;
     public  static  VAR_DESCRIPTION = "description" as string;
     public  static  VAR_IMAGE_URL = "imageUrl" as string;
+    public  static  VAR_CREATION_DATE = 'createdAt' as string;
 
     @Column({
         type: DataType.INTEGER,
