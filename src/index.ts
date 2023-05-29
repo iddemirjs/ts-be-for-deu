@@ -3,6 +3,7 @@ import Database from "./config/database";
 import NoteRouter from "./router/NoteRouter";
 import AuthenticationRouter from "./router/AuthenticationRouter";
 import fileUpload from "express-fileupload";
+import UserRouter from "./router/UserRouter";
 
 class App{
     public app: Application;
@@ -21,6 +22,7 @@ class App{
 
         this.app.use("/api/v1/note", NoteRouter);
         this.app.use("/api/v1/auth", AuthenticationRouter);
+        this.app.use("/api/v1/user", UserRouter);
     }
 
     protected databaseSync(): void {
