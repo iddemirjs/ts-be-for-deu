@@ -1,6 +1,8 @@
 import {Request, Response} from "express";
 import {AuthenticationService} from "../service/Authentication";
 import Authentication from "../utils/Authentication";
+import {Users} from "../models/Users";
+import {UserRepo} from "../repository/UsersRepo";
 
 class AuthenticationController {
     async login(req: Request, res: Response){
@@ -18,6 +20,14 @@ class AuthenticationController {
             const resToken = {
                 type: "Bearer",
                 token: token,
+                username: "",
+                email: ""
+            }
+            const user : Users | null = await new UserRepo().findByEmail(email);
+
+            if (user){
+                resToken.username = user.username;
+                resToken.email = user.email;
             }
             return res.status(200).json({
                 status: "OK",

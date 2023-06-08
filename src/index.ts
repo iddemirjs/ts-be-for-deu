@@ -43,4 +43,4 @@ const app: Application = new App().app;
 app.listen(port, () => {
    console.log("App is running... 🏃🏻");
 });
-// Kaldık : https://youtu.be/cv4ywZvS-go?t=1772
+
